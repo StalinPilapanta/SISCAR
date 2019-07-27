@@ -10,6 +10,7 @@ import com.uisrael.semana11siscar.controlador.impl.EmpleadosControladorImpl;
 import com.uisrael.semana11siscar.modelo.entidades.Empleados;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -30,12 +31,15 @@ public class EmpleadosView implements Serializable {
     private IEmpleadosControlador empleadoControlador;
     private Empleados nuevoEmpleado;
 
+    private List<Empleados> listaEmpleados;
+    
     public EmpleadosView() {
     }
 
     @PostConstruct
     public void init() {
         System.out.println("Manejador creado y listo");
+        listarEmpleados();
     }
     
     
@@ -73,6 +77,43 @@ public class EmpleadosView implements Serializable {
     }
 
     
+    // getters and setters de entidades y Interfaces
+    
+    
+    public IEmpleadosControlador getEmpleadoControlador() {
+        return empleadoControlador;
+    }
+
+    public void setEmpleadoControlador(IEmpleadosControlador empleadoControlador) {
+        this.empleadoControlador = empleadoControlador;
+    }
+
+    public Empleados getNuevoEmpleado() {
+        return nuevoEmpleado;
+    }
+
+    public void setNuevoEmpleado(Empleados nuevoEmpleado) {
+        this.nuevoEmpleado = nuevoEmpleado;
+    }
+
+    
+    
+    
+    
+    
+    // getters and setters de la lista
+    
+    
+    public List<Empleados> getListaEmpleados() {
+        return listaEmpleados;
+    }
+
+    public void setListaEmpleados(List<Empleados> listaEmpleados) {
+        this.listaEmpleados = listaEmpleados;
+    }
+   
+    
+    
     public void insertarEmpleado(){
     
         System.out.println("Insertando Empleado: " + nombreEmpleado);
@@ -83,5 +124,13 @@ public class EmpleadosView implements Serializable {
         nuevoEmpleado.setTelefono(telefonoEmpleado);
         empleadoControlador = new EmpleadosControladorImpl();
         empleadoControlador.insertarEmpleados(nuevoEmpleado);
+        listarEmpleados();
     }
+
+    public void listarEmpleados(){
+    
+        empleadoControlador = new EmpleadosControladorImpl();
+        listaEmpleados = empleadoControlador.listarPersonas();
+    }
+    
 }

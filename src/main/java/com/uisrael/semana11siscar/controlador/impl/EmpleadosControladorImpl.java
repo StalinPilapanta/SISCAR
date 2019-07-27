@@ -25,4 +25,10 @@ public class EmpleadosControladorImpl implements IEmpleadosControlador{
         empleadosDao.insertarEmpleados(nuevoEmpleado);
          
     } 
+
+    @Override
+    public List<Empleados> listarPersonas() {
+       IEmpleadosDao empladosDao = new EmpleadosDaoImpl(Empleados.class);
+       return empladosDao.listarPersonas();
+    }
 }

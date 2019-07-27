@@ -5,7 +5,6 @@
  */
 package com.uisrael.semana11siscar.controlador;
 
-
 import com.uisrael.semana11siscar.modelo.entidades.Empleados;
 import java.util.List;
 
@@ -14,6 +13,9 @@ import java.util.List;
  * @author Stalin
  */
 public interface IEmpleadosControlador {
-    public void insertarEmpleados(Empleados nuevoEmpleado );
+
+    public void insertarEmpleados(Empleados nuevoEmpleado);
+
+    public List<Empleados> listarPersonas();
 
 }

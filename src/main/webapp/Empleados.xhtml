@@ -13,7 +13,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <h:form id="idFormulario">
+        <h:form id="idFormularioEmpleado">
         <p:panel id="pIngresoEmpleados" header="Ingreso Empleados" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
             <h:panelGrid  id="pgEmpleados" columns="2">
                 
@@ -30,7 +30,7 @@ and open the template in the editor.
                 <p:inputText value="#{empleadocore.telefonoEmpleado}"></p:inputText>
             </h:panelGrid>
             
-            <p:commandButton icon="fa fa-save" value="Guardar" action="#{empleadocore.insertarEmpleado()}"></p:commandButton>
+            <p:commandButton icon="fa fa-save" value="Guardar" action="#{empleadocore.insertarEmpleado()}" update="idFormularioEmpleado"></p:commandButton>
             <p:commandButton icon="fa fa-pencil-square-o" value="Actualizar"></p:commandButton>
             <p:commandButton icon="fa fa-trash" value="Limpiar"></p:commandButton>
             
@@ -38,13 +38,27 @@ and open the template in the editor.
         
         <p:panel>
         
-            <p:dataTable>
-                <p:column headerText="Codigo"></p:column>
-                <p:column headerText="Nombre"></p:column>
-                <p:column headerText="Apellido"></p:column>
-                <p:column headerText="Telefono"></p:column>
-                <p:column headerText="Cargo"></p:column>
-                <p:column headerText="Telefono"></p:column>
+            <p:dataTable id="listadEmpleados" value="#{empleadocore.listaEmpleados}" var="listadEmpleados" widgetVar="listadEmpleados" 
+                         scrollable="trye" rows="10" scrollRows="20" paginator="true">
+                
+                <p:column headerText="Codigo" filterBy="#{listadEmpleados.getidEmpleado()}">
+                    <p:outputLabel value="#{listadEmpleados.getidEmpleado()}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Nombre" filterBy="#{listadEmpleados.nombre}">
+                    <p:outputLabel value="#{listadEmpleados.nombre}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Apellido">
+                    <p:outputLabel value="#{listadEmpleados.apellido}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Telefono">
+                    <p:outputLabel value="#{listadEmpleados.telefono}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Cargo">
+                    <p:outputLabel value="#{listadEmpleados.cargo}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Telefono">
+                    <p:outputLabel value="#{listadEmpleados.telefono}"></p:outputLabel>
+                </p:column>
                 
             </p:dataTable>
         </p:panel>

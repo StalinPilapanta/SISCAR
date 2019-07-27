@@ -5,8 +5,6 @@
  */
 package com.uisrael.semana11siscar.modelo.dao;
 
-
-
 import com.uisrael.semana11siscar.modelo.entidades.Empleados;
 import java.util.List;
 
@@ -15,5 +13,9 @@ import java.util.List;
  * @author Stalin
  */
 public interface IEmpleadosDao {
-    public void insertarEmpleados(Empleados nuevoEmpleado );    
+
+    public void insertarEmpleados(Empleados nuevoEmpleado);
+
+    public List<Empleados> listarPersonas();
+
 }
